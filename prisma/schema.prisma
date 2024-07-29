@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum USER_ROLES {
+  ADMIN
+  USER
+}
+
+model User {
+  id String @id @default(uuid())
+  email String @unique
+  first_name String
+  last_name String
+  password String
+  role USER_ROLES @default(USER)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  observations Observations[]
+}
+
+model Celestial_Bodies {
+  id String @id @default(uuid())
+  name String @unique
+  type String
+  distance_from_earth BigInt
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  observations Observations[]
+}
+
+model Observations {
+  id String @id @default(uuid())
+  notes String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+
+  user_id String
+  user User @relation(fields: [user_id], references: [id])
+
+  celestial_body_id String
+  celestial_body Celestial_Bodies @relation(fields: [celestial_body_id], references: [id])
+}
