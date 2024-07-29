@@ -26,6 +26,7 @@ Estas son las siguientes dependencias con las que se creó el proyecto:
 - **`joi`**: Para la validación de los datos en las rutas.
 - **`@prisma/client`**: Cliente de Prisma para interactuar con la base de datos.
 - **`prisma`** ORM para interactuar con la base de datos
+- **`husky`** Herramienta para gestionar y automatizar commits.
 
 ### INSTALACIÓN
 
