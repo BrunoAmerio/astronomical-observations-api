@@ -59,6 +59,21 @@ JWT_SECRET=
 npx prisma migrate dev --name init
 ```
 
+5. Ahora para rellenar la DB con Cuerpos Celestiales ejecuta el comando:
+
+```bash
+npm run seed
+```
+
+> **Tip:** Esto añade 10 Cuerpos Celestiales a la DB además de un usuario administrador
+
+Las credenciales para logearse como administrador son:
+
+```bash
+email: test@test.com
+password: admin
+```
+
 ### USO
 
 Para levantar el servidor basta con ejecutar el comando:
