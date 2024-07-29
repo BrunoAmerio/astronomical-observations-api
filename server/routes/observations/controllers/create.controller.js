@@ -24,7 +24,10 @@ const createController = {
         }
       })
 
-      res.status(201).json(newObservation)
+      res.status(201).json({
+        message: 'Observation created successfuly',
+        observation: newObservation
+      })
     } catch (error) {
       console.error('Error in createController', error)
 

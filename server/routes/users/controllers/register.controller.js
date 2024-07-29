@@ -21,9 +21,9 @@ const registerUserController = {
 
       newUserData.password = await Bcrypt.hash(newUserData.password, 10)
 
-      const newUser = await User.create({ data: newUserData })
+      await User.create({ data: newUserData })
 
-      res.send({ user: newUser })
+      res.send({ message: 'User created successfuly' })
     } catch (error) {
       console.error('Error in registerController', error)
 

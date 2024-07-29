@@ -30,7 +30,7 @@ const loginUserController = {
         throw new Error('Password mismatch')
       }
 
-      const dataForToken = {
+      const userForToken = {
         first_name: foundedUser.first_name,
         last_name: foundedUser.last_name,
         email: foundedUser.email,
@@ -38,9 +38,9 @@ const loginUserController = {
         id: foundedUser.id
       }
 
-      const token = generateToken(dataForToken)
+      const token = generateToken(userForToken)
 
-      res.send({ user: dataForToken, token })
+      res.send({ user: userForToken, token })
     } catch (error) {
       console.error('Error in registerController', error)
 

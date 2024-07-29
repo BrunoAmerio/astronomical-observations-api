@@ -39,7 +39,7 @@ const editController = {
 
       res.send({
         message: 'Observation updated successfuly',
-        data: updatedObservation
+        observation: updatedObservation
       })
     } catch (error) {
       console.error('Error in editController', error)
