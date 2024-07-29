@@ -19,7 +19,8 @@ const deleteController = {
 
       res.send({ message: 'Observation was deleted successfuly' })
     } catch (error) {
-      console.log(error)
+      console.error('Error in deleteController', error)
+
       res.status(400).send({ error: error.message })
     }
   }

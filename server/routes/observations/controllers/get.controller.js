@@ -21,7 +21,8 @@ const getController = {
 
       res.send({ observation })
     } catch (error) {
-      console.log(error)
+      console.error('Error in getController', error)
+
       res.status(400).send({ error: error.message })
     }
   }

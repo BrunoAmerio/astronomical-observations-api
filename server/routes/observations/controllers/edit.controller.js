@@ -42,7 +42,8 @@ const editController = {
         data: updatedObservation
       })
     } catch (error) {
-      console.log(error)
+      console.error('Error in editController', error)
+
       res.status(400).send({ error: error.message })
     }
   }
