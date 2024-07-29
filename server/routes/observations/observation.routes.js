@@ -6,7 +6,7 @@ import editController from './controllers/edit.controller.js'
 
 const observationRouter = Router()
 
-observationRouter.get('/', getController.middlewares, getController.handler)
+observationRouter.get('/:id', getController.middlewares, getController.handler)
 
 observationRouter.post(
   '/new',

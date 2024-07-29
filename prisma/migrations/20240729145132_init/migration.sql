@@ -20,7 +20,7 @@ CREATE TABLE "Celestial_Bodies" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "type" TEXT NOT NULL,
-    "distance_from_earth" BIGINT NOT NULL,
+    "distance_from_earth" INTEGER NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
 
