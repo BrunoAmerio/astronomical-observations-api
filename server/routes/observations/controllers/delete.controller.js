@@ -1,25 +1,23 @@
+import userRoles from '../../../utils/user.roles.js'
+import checkRole from '../../../middlewares/checkRole.js'
+
 import { PrismaClient } from '@prisma/client'
+
 const { observations: Observations } = new PrismaClient()
 
-const getController = {
-  middlewares: [],
+const deleteController = {
+  middlewares: [checkRole(userRoles.admin)],
   handler: async (req, res) => {
     const { id: observation_id } = req.params
+
     try {
-      const observation = await Observations.findFirst({
+      await Observations.delete({
         where: {
           id: observation_id
-        },
-        include: {
-          celestial_body: true
         }
       })
 
-      if (!observation) {
-        throw new Error('Observation not found')
-      }
-
-      res.send({ observation })
+      res.send({ message: 'Observation was deleted successfuly' })
     } catch (error) {
       console.log(error)
       res.status(400).send({ error: error.message })
@@ -27,4 +25,4 @@ const getController = {
   }
 }
 
-export default getController
+export default deleteController

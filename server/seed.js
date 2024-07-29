@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client'
+import bcrypt from 'bcrypt'
 
 const prisma = new PrismaClient()
 
@@ -11,9 +12,9 @@ async function seed() {
     { name: 'Saturn', type: 'Planet', distance_from_earth: 1433000000 },
     { name: 'Venus', type: 'Planet', distance_from_earth: 108200000 },
     { name: 'Mercury', type: 'Planet', distance_from_earth: 57900000 },
-    { name: 'Uranus', type: 'Planet', distance_from_earth: 2871000000 },
-    { name: 'Neptune', type: 'Planet', distance_from_earth: 4495000000 },
-    { name: 'Pluto', type: 'Dwarf Planet', distance_from_earth: 5900000000 }
+    { name: 'Uranus', type: 'Planet', distance_from_earth: 287100000 },
+    { name: 'Neptune', type: 'Planet', distance_from_earth: 449500000 },
+    { name: 'Pluto', type: 'Dwarf Planet', distance_from_earth: 59000000 }
   ]
 
   for (const body of celestialBodies) {
@@ -22,7 +23,17 @@ async function seed() {
     })
   }
 
-  console.log('Celestial bodies seeded successfully')
+  await prisma.user.create({
+    data: {
+      email: 'test@test.com',
+      first_name: 'Admin',
+      last_name: 'Admin',
+      password: await bcrypt.hash('admin', 10),
+      role: 'ADMIN'
+    }
+  })
+
+  console.log('Data was seeded successfully')
 }
 
 seed()

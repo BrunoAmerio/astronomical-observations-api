@@ -13,7 +13,7 @@ const createController = {
   middleware: [validateSchema(createObservationSchema)],
   handler: async (req, res) => {
     const { notes, celestial_body_id } = req.body
-    const user_id = req.user.id
+    const user_id = req.auth.id
 
     try {
       const newObservation = await Observations.create({
@@ -26,8 +26,7 @@ const createController = {
 
       res.status(201).json(newObservation)
     } catch (err) {
-      console.log(err.message)
-      res.status(500).json({ error: err.message })
+      res.status(400).json({ error: err.message })
     }
   }
 }

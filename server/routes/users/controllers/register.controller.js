@@ -25,7 +25,8 @@ const registerUserController = {
 
       res.send({ user: newUser })
     } catch (error) {
-      console.log('Error in registerController', error)
+      console.error('Error in registerController', error)
+
       res.status(400).send({ error: error.message })
     }
   }

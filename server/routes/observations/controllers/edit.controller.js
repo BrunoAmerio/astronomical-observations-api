@@ -11,7 +11,7 @@ const editSchema = Joi.object({
 const editController = {
   middleware: [validateSchema(editSchema)],
   handler: async (req, res) => {
-    const { id: user_id } = req.user
+    const { id: user_id } = req.auth
     const { id: observation_id } = req.params
     const { notes } = req.body
 
@@ -43,7 +43,7 @@ const editController = {
       })
     } catch (error) {
       console.log(error)
-      res.send({ error: error.message })
+      res.status(400).send({ error: error.message })
     }
   }
 }

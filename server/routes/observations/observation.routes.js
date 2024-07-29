@@ -3,6 +3,7 @@ import { Router } from 'express'
 import getController from './controllers/get.controller.js'
 import createController from './controllers/create.controller.js'
 import editController from './controllers/edit.controller.js'
+import deleteController from './controllers/delete.controller.js'
 
 const observationRouter = Router()
 
@@ -20,6 +21,10 @@ observationRouter.put(
   editController.handler
 )
 
-observationRouter.delete('/delete/:id')
+observationRouter.delete(
+  '/delete/:id',
+  deleteController.middlewares,
+  deleteController.handler
+)
 
 export default observationRouter
