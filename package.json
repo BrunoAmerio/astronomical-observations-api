@@ -6,7 +6,8 @@
   "license": "ISC",
   "private": true,
   "scripts": {
-    "dev": "nodemon -r dotenv/config server/"
+    "api": "nodemon -r dotenv/config server/",
+    "seed": "node server/seed.js"
   },
   "dependencies": {
     "@prisma/client": "^5.17.0",

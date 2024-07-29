@@ -1,9 +1,16 @@
-import validateSchema from '../../../middlewares/validateSchema.middleware.js'
-import registerSchema from '../schema/register.schema.js'
-
 import Bcrypt from 'bcrypt'
+import Joi from 'joi'
+import validateSchema from '../../../middlewares/validateSchema.middleware.js'
+
 import { PrismaClient } from '@prisma/client'
 const { user: User } = new PrismaClient()
+
+const registerSchema = Joi.object({
+  email: Joi.string().email().required(),
+  first_name: Joi.string().required(),
+  last_name: Joi.string().required(),
+  password: Joi.string().min(5).required()
+})
 
 const registerUserController = {
   middlewares: [validateSchema(registerSchema)],

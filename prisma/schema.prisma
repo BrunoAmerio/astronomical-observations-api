@@ -29,7 +29,7 @@ model Celestial_Bodies {
   id String @id @default(uuid())
   name String @unique
   type String
-  distance_from_earth BigInt
+  distance_from_earth Int
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
